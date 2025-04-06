@@ -8,12 +8,13 @@
 */
 import router from "@adonisjs/core/services/router";
 
+const SearchQueriesController = () =>
+  import("#controllers/search_queries_controller");
+
 router.get("/", async () => {
   return {
     hello: "world",
   };
 });
 
-router.get("/elo", async () => {
-  return "żelo";
-});
+router.post("/test", [SearchQueriesController, "store"]);
