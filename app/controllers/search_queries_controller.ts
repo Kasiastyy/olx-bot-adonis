@@ -10,4 +10,14 @@ export default class SearchQueriesController {
     const searchQuery = await SearchQuery.create(data);
     return searchQuery;
   }
+
+  async index() {
+    const queries = await SearchQuery.all();
+    return queries;
+  }
+
+  async show({ params }: HttpContext) {
+    const query = await SearchQuery.findOrFail(params.id);
+    return query;
+  }
 }
