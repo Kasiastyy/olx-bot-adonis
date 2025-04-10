@@ -17,4 +17,8 @@ router.get("/", async () => {
   };
 });
 
-router.post("/test", [SearchQueriesController, "store"]);
+router
+  .group(() => {
+    router.resource("search-queries", SearchQueriesController);
+  })
+  .prefix("/api/v1");
